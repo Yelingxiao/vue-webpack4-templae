@@ -1,0 +1,9 @@
+node_modules
+dist
+yarn.lock
+.vscode
+.history
+.DS_Store
+.idea
+.cache
+.dll-link-plugin

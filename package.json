@@ -1,0 +1,27 @@
+{
+  "name": "vue-webpack4-template",
+  "version": "1.0.0",
+  "description": "webpack set vue environment",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yelingxiao/vue-webpack4-templae.git"
+  },
+  "author": "ylx",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Yelingxiao/vue-webpack4-templae/issues"
+  },
+  "homepage": "https://github.com/Yelingxiao/vue-webpack4-templae#readme",
+  "scripts": {},
+  "devDependencies": {
+    "css-loader": "^2.1.1",
+    "less": "^3.9.0",
+    "less-loader": "^5.0.0",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.3.2",
+    "webpack-dev-server": "^3.3.1"
+  }
+}
