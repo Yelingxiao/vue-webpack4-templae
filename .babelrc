@@ -1,16 +1,17 @@
 {
   "presets": [
-    ["@babel/preset-env", {
-      "modules": false,
-      "targets": {
-        "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
-      },
-      "useBuiltIns": "usage",
-      "corejs": {
-        "version": 2,
-        "proposals": true
+    [
+      "@babel/preset-env",
+      {
+        "useBuiltIns": "usage",
+        "corejs": {
+          "version": 2,
+          "proposals": true
+        }
       }
-    }]
+    ]
   ],
-  "plugins": ["@babel/plugin-transform-runtime"]
+  "plugins": [
+    "@babel/plugin-syntax-dynamic-import"
+  ]
 }

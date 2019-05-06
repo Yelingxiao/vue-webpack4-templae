@@ -1,32 +1,28 @@
 module.exports = {
-  // 别人可以直接使用你配置好的ESLint
   root: true,
-  // 指定解析器
-  parser: 'babel-eslint',
-  // 指定解析器选项
   parserOptions: {
-    sourceType: 'module',
-    ecmaVersion: 2018
+    parser: 'babel-eslint',
+    sourceType: 'module'
   },
-  extends: 'standard',
-  // 指定脚本的运行环境
   env: {
-    "browser": true,
-    "node": true,
-    'es6': true,
+    browser: true,
   },
-  // 脚本在执行期间访问的额外的全局变量
-  globals: {
-    localStorage: true,
-    alert: true,
-    Image: true,
-    history: true,
-    location: true
+  extends: [
+    'plugin:vue/essential',
+    'standard'
+  ],
+  plugins: [
+    'vue'
+  ],
+  settings: {
+    'import/resolver': {
+      webpack: {
+        config: 'build/webpack.base.conf.js',
+      },
+    },
   },
-  // 启用的规则及其各自的错误级别
   rules: {
-    // function 的圆括号之前是否使用空格
-    // @off 不关心
-    'space-before-function-paren': 0
+    'beforeStatementContinuationChars': 'never',
+    'space-before-function-paren': ['error', 'never']
   }
 };
