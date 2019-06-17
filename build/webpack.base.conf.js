@@ -12,38 +12,38 @@ util.cache.init()
 const alternativePlugin = () =>
   util.IS_PROD
     ? [
-        new CleanWebpackPlugin(),
-        new HtmlWebpackPlugin({
-          template: 'index.html',
-          minify: {
-            removeComments: true,
-            collapseWhitespace: true,
-            removeAttributeQuotes: true,
-          },
-        }),
-      ]
+      new CleanWebpackPlugin(),
+      new HtmlWebpackPlugin({
+        template: 'index.html',
+        minify: {
+          removeComments: true,
+          collapseWhitespace: true,
+          removeAttributeQuotes: true
+        }
+      })
+    ]
     : [
-        new HtmlWebpackPlugin({
-          template: 'index.html',
-        }),
-      ]
+      new HtmlWebpackPlugin({
+        template: 'index.html'
+      })
+    ]
 
 module.exports = {
   mode: process.env.NODE_ENV,
   entry: {
-    app: './src/main.js',
+    app: './src/main.js'
   },
   output: {
     path: util.resolve('dist'),
     filename: 'js/[name].[hash].js',
-    chunkFilename: 'js/[id].[chunkhash].js',
+    chunkFilename: 'js/[id].[chunkhash].js'
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'], // 引入 js vue json 文件时可以不用写后缀名
     alias: {
       vue$: 'vue/dist/vue.runtime.esm.js',
-      '@': util.resolve('src'), // 配置 @ 指向 src
-    },
+      '@': util.resolve('src') // 配置 @ 指向 src
+    }
   },
   module: {
     rules: [
@@ -53,9 +53,9 @@ module.exports = {
         test: /\.js$/,
         use: [
           ...util.cache.getLoaders('cache-babel'), // cache-loader 与 thread-loader
-          'babel-loader?cacheDirectory',
+          'babel-loader?cacheDirectory'
         ],
-        include: util.resolve('src'),
+        include: util.resolve('src')
       },
       {
         test: /\.vue$/,
@@ -69,48 +69,48 @@ module.exports = {
                 video: ['src', 'poster'],
                 source: 'src',
                 img: 'src',
-                image: 'xlink:href',
-              },
-            },
-          },
+                image: 'xlink:href'
+              }
+            }
+          }
         ],
-        include: util.resolve('src'),
+        include: util.resolve('src')
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
         options: {
           limit: 10240,
-          name: 'images/[name].[hash:7].[ext]',
-        },
+          name: 'images/[name].[hash:7].[ext]'
+        }
       },
       {
         test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
         loader: 'url-loader',
         options: {
           limit: 10240,
-          name: 'media/[name].[hash:7].[ext]',
-        },
+          name: 'media/[name].[hash:7].[ext]'
+        }
       },
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
         loader: 'url-loader',
         options: {
           limit: 10240,
-          name: 'fonts/[name].[hash:7].[ext]',
-        },
-      },
-    ],
+          name: 'fonts/[name].[hash:7].[ext]'
+        }
+      }
+    ]
   },
   plugins: [
     ...alternativePlugin(),
     new DllLinkPlugin({
       htmlMode: true,
-      config: dllConf,
+      config: dllConf
     }),
-    new VueLoaderPlugin(),
+    new VueLoaderPlugin()
   ],
   stats: {
-    children: false, // 避免过多子信息
-  },
+    children: false // 避免过多子信息
+  }
 }

@@ -15,17 +15,17 @@ excludeVendors.forEach(dep => {
 module.exports = {
   mode: process.env.NODE_ENV,
   entry: {
-    vendor: vendors,
+    vendor: vendors
   },
   output: {
     path: resolve('dist'),
     filename: 'js/[name].[hash].js',
-    library: '[name]',
+    library: '[name]'
   },
   plugins: [
     new webpack.DllPlugin({
       path: resolve('dist/[name]-manifest'),
-      name: '[name]',
-    }),
-  ],
+      name: '[name]'
+    })
+  ]
 }
