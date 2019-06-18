@@ -9,8 +9,8 @@ const dllConf = require('./webpack.dll.conf.js')
 util.cache.init()
 
 // 由于 dll 打包，这两个插件要写在 base 里，所以根据环境来判断
-const alternativePlugin = () =>
-  util.IS_PROD
+const alternativePlugin = () => {
+  return util.IS_PROD
     ? [
       new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
@@ -27,6 +27,7 @@ const alternativePlugin = () =>
         template: 'index.html'
       })
     ]
+}
 
 module.exports = {
   mode: process.env.NODE_ENV,

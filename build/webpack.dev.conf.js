@@ -12,7 +12,7 @@ module.exports = merge(config, {
     open: true,
     quiet: true, // 关闭 webpack-dev-server 的提示，用 friendly-error-plugin
     overlay: true,
-    host: getIPAdress(),
+    host: getIPAdress,
     clientLogLevel: 'warning' // 控制台提示信息级别是 warning 以上
   },
   plugins: [

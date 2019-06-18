@@ -23,9 +23,9 @@ const getEslintRules = () => {
         include: resolve('src'),
         options: {
           formatter: eslintFriendlyFormatter, // eslint 友好提示
-          emitWarning: true,
-        },
-      },
+          emitWarning: true
+        }
+      }
     ]
   }
   return eslint
@@ -42,9 +42,9 @@ const cache = () => {
         workerNodeArgs: ['--max-old-space-size=1024'],
         poolRespawn: false,
         poolTimeout: 500,
-        poolParallelJobs: 200,
+        poolParallelJobs: 200
       },
-      ['babel-loader', 'vue-loader'],
+      ['babel-loader', 'vue-loader']
     )
   }
   // cache-loader 配置
@@ -52,14 +52,14 @@ const cache = () => {
     {
       loader: 'cache-loader',
       options: {
-        cacheDirectory: resolve(`.cache/${dir}`),
-      },
+        cacheDirectory: resolve(`.cache/${dir}`)
+      }
     },
-    'thread-loader',
+    'thread-loader'
   ]
   return {
     init,
-    getLoaders,
+    getLoaders
   }
 }
 
@@ -101,14 +101,14 @@ const cssLoaders = () => {
   const loaderObj = {
     css: generateCssLoaders(), // 开发环境生成 ['style-loader', 'css-loader']
     'styl(us)?': generateCssLoaders('stylus'), // 开发环境生成 ['style-loader', 'css-loader', 'stylus-loader']
-    'less?': generateCssLoaders('less'), // 开发环境生成 ['style-loader', 'css-loader', 'less-loader']
+    'less?': generateCssLoaders('less') // 开发环境生成 ['style-loader', 'css-loader', 'less-loader']
   }
   const loaders = []
   // 生成带 test 的完整 rule
   for (const name in loaderObj) {
     loaders.push({
       test: new RegExp(`\\.${name}$`),
-      use: loaderObj[name],
+      use: loaderObj[name]
     })
   }
   return loaders
@@ -117,8 +117,8 @@ const cssLoaders = () => {
 module.exports = {
   IS_PROD,
   resolve,
-  getIPAdress,
+  getIPAdress: getIPAdress(),
   cache: cache(),
   eslint: getEslintRules(),
-  cssLoaders: cssLoaders(),
+  cssLoaders: cssLoaders()
 }
