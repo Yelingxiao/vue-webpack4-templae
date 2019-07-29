@@ -5,9 +5,6 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 const util = require('./util')
 const dllConf = require('./webpack.dll.conf.js')
 
-// 初始化 thread-loader 的配置
-util.cache.init()
-
 // 由于 dll 打包，这两个插件要写在 base 里，所以根据环境来判断
 const alternativePlugin = () => {
   return util.IS_PROD

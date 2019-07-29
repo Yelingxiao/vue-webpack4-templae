@@ -2,7 +2,10 @@ const webpack = require('webpack')
 const merge = require('webpack-merge')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const config = require('./webpack.base.conf')
-const { getIPAdress } = require('./util')
+const { getIPAdress, cache } = require('./util')
+
+// 初始化 thread-loader 的配置
+// cache.init()
 
 module.exports = merge(config, {
   devtool: 'cheap-module-eval-source-map', // 代码追踪
